@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.woniuxy.movie.mapper.MovieMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.woniuxy.movie.entity.Movie">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="director" property="director"/>
+        <result column="actor" property="actor"/>
+        <result column="description" property="description"/>
+        <result column="stills" property="stills"/>
+        <result column="trailer" property="trailer"/>
+        <result column="score" property="score"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, name, director, actor, description, stills, trailer, score
+    </sql>
+
+    <!-- 通过类型查询电影 -->
+    <select id="selectByType" resultType="com.woniuxy.movie.entity.Movie">
+        select ticket_movie.id,
+               ticket_movie.name,
+               director,
+               actor,
+               description,
+               stills,
+               trailer,
+               score
+        from ticket_movie,
+             ticket_type,
+             ticket_movie_type
+        where ticket_type.id = #{typeId}
+          and ticket_type.id = typeid
+          and movieid = ticket_movie.id
+    </select>
+
+
+</mapper>

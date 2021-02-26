@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.woniuxy.cinema.mapper.ScheduleMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.woniuxy.cinema.entity.Schedule">
+        <id column="id" property="id" />
+        <result column="film_id" property="filmId" />
+        <result column="hall_id" property="hallId" />
+        <result column="starttime" property="starttime" />
+        <result column="endtime" property="endtime" />
+        <result column="price" property="price" />
+        <result column="status" property="status" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, film_id, hall_id, starttime, endtime, price, status
+    </sql>
+
+</mapper>

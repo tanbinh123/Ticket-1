@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: file
+  # 文件上传
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 50MB
+      max-request-size: 50MB
+
+server:
+  port: 9000
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+logging:
+  level:
+    root: info
+
+oss:
+  endpoint: oss-cn-hangzhou.aliyuncs.com
+  keyid: LTAI4GHavKiMSYy9qKk8CbKZ # 填写刚刚生成的AccessKey
+  keysecret: DcT2KJywfUKf83uBibmXklZW72wPLL  # 填写刚刚生成的AccessSecret
+  bucketname: static-file-kyoko # bucket名称
+  filehost: ticket    # bucket下文件夹的路径
+
+
