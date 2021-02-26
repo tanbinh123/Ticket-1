@@ -1,12 +1,13 @@
 package com.woniuxy.order.entity;
 
-import java.math.BigDecimal;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
-import java.time.LocalDateTime;
-import java.io.Serializable;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+
+import java.io.Serializable;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 /**
  * <p>
@@ -25,15 +26,15 @@ public class Order implements Serializable {
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
-    private String orderno;
+    private String orderNo;
 
-    private LocalDateTime ordertime;
+    private LocalDateTime orderTime;
 
-    private Integer userid;
+    private Integer userId;
 
     private BigDecimal money;
 
-    private LocalDateTime paytime;
+    private LocalDateTime payTime;
 
     private String cinema;
 

@@ -23,9 +23,9 @@ public class MovieType implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private Integer movieid;
+    private Integer movieId;
 
-    private Integer typeid;
+    private Integer typeId;
 
 
 }

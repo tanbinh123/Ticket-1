@@ -2,9 +2,10 @@ package com.woniuxy.cinema.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
-import java.io.Serializable;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+
+import java.io.Serializable;
 
 /**
  * <p>
@@ -23,11 +24,11 @@ public class Seat implements Serializable {
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
-    private Integer hallid;
+    private Integer hallId;
 
-    private Integer rowno;
+    private Integer rowNo;
 
-    private Integer colno;
+    private Integer colNo;
 
     private String status;
 

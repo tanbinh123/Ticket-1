@@ -33,9 +33,9 @@ public class User implements Serializable {
 
     private String avatar;
 
-    private String telphone;
+    private String tel;
 
-    private LocalDate regtime;
+    private LocalDate regTime;
 
     private Integer integration;
 

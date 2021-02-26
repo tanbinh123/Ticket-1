@@ -7,12 +7,12 @@
         <id column="id" property="id" />
         <result column="name" property="name" />
         <result column="address" property="address" />
-        <result column="telphone" property="telphone" />
+        <result column="tel" property="tel" />
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, name, address, telphone
+        id, name, address, tel
     </sql>
 
 </mapper>

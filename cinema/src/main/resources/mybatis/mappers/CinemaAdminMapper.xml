@@ -8,13 +8,13 @@
         <result column="account" property="account" />
         <result column="password" property="password" />
         <result column="salt" property="salt" />
-        <result column="telphone" property="telphone" />
+        <result column="tel" property="tel" />
         <result column="status" property="status" />
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, account, password, salt, telphone, status
+        id, account, password, salt, tel, status
     </sql>
 
 </mapper>

@@ -4,22 +4,22 @@
 
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.woniuxy.movie.entity.MovieType">
-        <id column="movieid" property="movieid"/>
-        <result column="typeid" property="typeid"/>
+        <id column="movie_id" property="movieId"/>
+        <result column="type_id" property="typeId"/>
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        movieid, typeid
+        movie_id, type_id
     </sql>
 
     <!-- 添加电影 -->
     <insert id="insertAll">
         insert into ticket_movie_type
-        (movieid,typeid)
+        (movie_id,type_id)
         values
         <foreach collection="list" item="movie_types" separator=",">
-            (#{movie_types.movieid},#{movie_types.typeid})
+            (#{movie_types.movieId},#{movie_types.typeId})
         </foreach>
     </insert>
 

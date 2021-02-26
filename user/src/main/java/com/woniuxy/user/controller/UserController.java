@@ -4,6 +4,8 @@ package com.woniuxy.user.controller;
 import com.woniuxy.common.enums.StateEnum;
 import com.woniuxy.common.utils.ResponseResult;
 import com.woniuxy.user.service.UserService;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -15,7 +17,7 @@ import javax.annotation.Resource;
 
 /**
  * <p>
- *  前端控制器
+ * 前端控制器
  * </p>
  *
  * @author ll_5216
@@ -32,16 +34,27 @@ public class UserController {
     private Integer port;
 
     @RequestMapping("/add")
-    public String add(){
+    public String add() {
         log.info(String.valueOf(port));
         return "user-add";
     }
 
+    /**
+     * 修改用户积分
+     *
+     * @param chgVal 积分变化值
+     * @param id     用户ID
+     * @return 修改结果
+     */
     @ApiOperation("修改用户积分")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "chgVal", value = "积分变化值", defaultValue = "2",
+                    required = true, paramType = "query"),
+            @ApiImplicitParam(name = "id", value = "用户ID", required = true, paramType = "query")})
     @PostMapping("/integration")
-    private ResponseResult<?> updateIntegration(Integer integration, Integer id){
-        userService.updateIntegrationById(integration, id);
-        return new ResponseResult<>(StateEnum.SUCCESS);
+    private ResponseResult<?> updateIntegration(Integer chgVal, Integer id) {
+        return userService.updateIntegrationById(chgVal, id) ?
+                new ResponseResult<>(StateEnum.SUCCESS) : new ResponseResult<>(StateEnum.FAIL);
     }
 }
 

@@ -10,7 +10,7 @@ import javax.annotation.Resource;
 
 /**
  * <p>
- *  服务实现类
+ * 服务实现类
  * </p>
  *
  * @author ll_5216
@@ -21,8 +21,15 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     @Resource
     UserMapper userMapper;
 
+    /**
+     * 修改用户积分
+     *
+     * @param chgVal 积分变化值
+     * @param id     用户ID
+     * @return 修改结果
+     */
     @Override
-    public Boolean updateIntegrationById(Integer integration, Integer id) {
-        return userMapper.updateIntegrationById(integration, id);
+    public Boolean updateIntegrationById(Integer chgVal, Integer id) {
+        return userMapper.updateIntegrationById(chgVal, id);
     }
 }

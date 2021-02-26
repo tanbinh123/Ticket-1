@@ -7,12 +7,12 @@
         <id column="id" property="id" />
         <result column="name" property="name" />
         <result column="type" property="type" />
-        <result column="cinemaid" property="cinemaid" />
+        <result column="cinema_id" property="cinemaId" />
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, name, type, cinemaid
+        id, name, type, cinema_id
     </sql>
 
 </mapper>

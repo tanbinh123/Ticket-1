@@ -60,7 +60,7 @@ public class MovieServiceImpl extends ServiceImpl<MovieMapper, Movie> implements
         // 添加电影-类型
         List<MovieType> movieTypes = new ArrayList<>();
         for (Integer typeID : typeIDs) {
-            movieTypes.add(new MovieType().setMovieid(movie.getId()).setTypeid(typeID));
+            movieTypes.add(new MovieType().setMovieId(movie.getId()).setTypeId(typeID));
         }
         movieTypeMapper.insertAll(movieTypes);
 
