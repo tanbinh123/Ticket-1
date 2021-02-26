@@ -1,0 +1,6 @@
+package com.woniuxy.common.enums;
+
+public enum StateEnum {
+    SUCCESS, FAIL, NO_LOGIN, ERROR, WITHOUT_PERM, NO_DATA, TEACHER_INFO_ERROR, INSERT_FAILED,
+    TYPE_EXIST, TYPE_NOT_EXIST, ILLEGAL_PARAMETER
+}
