@@ -18,4 +18,17 @@
         id, film_id, hall_id, start_time, end_time, price, status
     </sql>
 
+    <select id="selectSeatStatusById" resultMap="A">
+        select row_no, col_no, ticket_schedule_seat.status as r_status
+        from ticket_schedule_seat, ticket_seat
+        where schedule_id = 1 and seat_id = ticket_seat.id
+    </select>
+    <resultMap id="A" type="com.woniuxy.cinema.entity.dto.ScheduleSeatStatusDto">
+        <result column="row_no" property="rowNo" />
+        <result column="col_no" property="colNo" />
+        <result column="r_status" property="status" />
+    </resultMap>
+
+
+
 </mapper>

@@ -6,6 +6,10 @@ spring:
     password: '#5216alsfe'
   application:
     name: order
+  cloud:
+    loadbalancer:
+      ribbon:
+        enabled: false
 
 mybatis-plus:
   mapper-locations: classpath:/mybatis/mappers/*.xml
@@ -22,3 +26,13 @@ eureka:
 logging:
   level:
     root: info
+
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
+
+
+

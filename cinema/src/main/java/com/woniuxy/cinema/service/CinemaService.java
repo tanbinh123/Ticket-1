@@ -12,5 +12,11 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @since 2021-02-23
  */
 public interface CinemaService extends IService<Cinema> {
-
+    /**
+     * 添加影院
+     *
+     * @param cinema 影院对象
+     * @return 添加结果
+     */
+    Boolean add(Cinema cinema);
 }

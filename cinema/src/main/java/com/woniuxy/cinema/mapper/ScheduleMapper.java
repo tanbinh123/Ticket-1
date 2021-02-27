@@ -1,7 +1,9 @@
 package com.woniuxy.cinema.mapper;
-
-import com.woniuxy.cinema.entity.Schedule;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.woniuxy.cinema.entity.Schedule;
+import com.woniuxy.cinema.entity.dto.ScheduleSeatStatusDto;
+
+import java.util.List;
 
 /**
  * <p>
@@ -12,5 +14,6 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @since 2021-02-23
  */
 public interface ScheduleMapper extends BaseMapper<Schedule> {
+    List<ScheduleSeatStatusDto> selectSeatStatusById(Integer id);
 
 }

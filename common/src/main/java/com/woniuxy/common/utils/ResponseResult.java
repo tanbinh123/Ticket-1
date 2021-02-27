@@ -77,6 +77,14 @@ public class ResponseResult<T> {
                 this.state = ILLEGAL_PARAMETER;
                 this.message = "参数非法";
                 break;
+            case CINEMA_INFO_EXIST:
+                this.code = 500;
+                this.state = CINEMA_INFO_EXIST;
+                this.message = "影院信息已存在";
+            case HALL_EXIST:
+                this.code = 500;
+                this.state = HALL_EXIST;
+                this.message = "放映厅已存在";
         }
     }
 

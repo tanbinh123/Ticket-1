@@ -15,4 +15,15 @@
         id, name, address, tel
     </sql>
 
+    <!-- 通过 名称/电话/地址 获取影院 -->
+    <select id="selectByNameOrTelOrAddress" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from ticket_cinema
+        where
+        name = #{name,jdbcType=VARCHAR}
+        OR tel = #{tel,jdbcType=VARCHAR}
+        OR address = #{address,jdbcType=VARCHAR}
+    </select>
+
 </mapper>

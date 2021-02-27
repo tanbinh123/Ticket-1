@@ -8,17 +8,15 @@
         <result column="order_no" property="orderNo" />
         <result column="order_time" property="orderTime" />
         <result column="user_id" property="userId" />
-        <result column="money" property="money" />
+        <result column="schedule_id" property="scheduleId" />
         <result column="pay_time" property="payTime" />
-        <result column="cinema" property="cinema" />
-        <result column="hall" property="hall" />
         <result column="seat" property="seat" />
         <result column="status" property="status" />
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, order_no, order_time, user_id, money, pay_time, cinema, hall, seat, status
+        id, order_no, order_time, user_id, schedule_id, pay_time, seat, status
     </sql>
 
 </mapper>

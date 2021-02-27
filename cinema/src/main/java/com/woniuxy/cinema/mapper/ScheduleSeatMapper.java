@@ -1,4 +1,5 @@
 package com.woniuxy.cinema.mapper;
+import org.apache.ibatis.annotations.Param;
 
 import com.woniuxy.cinema.entity.ScheduleSeat;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
@@ -12,5 +13,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @since 2021-02-23
  */
 public interface ScheduleSeatMapper extends BaseMapper<ScheduleSeat> {
-
+    Boolean updateStatusByScheduleIdAndSeatId(@Param("status") String status,
+                                          @Param("scheduleId") Integer scheduleId,
+                                          @Param("seatId") Integer seatId);
 }

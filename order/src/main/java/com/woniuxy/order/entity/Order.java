@@ -2,11 +2,12 @@ package com.woniuxy.order.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.experimental.Accessors;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 /**
@@ -18,7 +19,9 @@ import java.time.LocalDateTime;
  * @since 2021-02-23
  */
 @Data
+@Accessors(chain = true)
 @EqualsAndHashCode(callSuper = false)
+@TableName("ticket_order")
 public class Order implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -32,13 +35,9 @@ public class Order implements Serializable {
 
     private Integer userId;
 
-    private BigDecimal money;
+    private Integer scheduleId;
 
     private LocalDateTime payTime;
-
-    private String cinema;
-
-    private String hall;
 
     private String seat;
 

@@ -30,6 +30,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
      */
     @Override
     public Boolean updateIntegrationById(Integer chgVal, Integer id) {
+        // TODO 减积分前判断积分是否足够
         return userMapper.updateIntegrationById(chgVal, id);
     }
 }

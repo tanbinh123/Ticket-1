@@ -22,7 +22,7 @@ public interface UserMapper extends BaseMapper<User> {
      * @param id     用户ID
      * @return 修改结果
      */
-    Boolean updateIntegrationById(@Param("integration") Integer chgVal, @Param("id") Integer id);
+    Boolean updateIntegrationById(@Param("chgVal") Integer chgVal, @Param("id") Integer id);
 
 
 }
