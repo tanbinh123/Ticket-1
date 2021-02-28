@@ -18,6 +18,7 @@
         id, account, password, avatar, tel, reg_time, integration
     </sql>
 
+    <!-- 修改用户积分 -->
     <update id="updateIntegrationById">
         update ticket_user
         set integration = integration + #{chgVal,jdbcType=NUMERIC}
