@@ -2,6 +2,7 @@ package com.woniuxy.cinema.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -18,7 +19,8 @@ import java.time.LocalDateTime;
  * @since 2021-02-23
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode()
+@TableName("ticket_schedule")
 public class Schedule implements Serializable {
 
     private static final long serialVersionUID = 1L;

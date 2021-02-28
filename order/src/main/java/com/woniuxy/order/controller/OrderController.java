@@ -1,6 +1,7 @@
 package com.woniuxy.order.controller;
 
 
+import cn.hutool.core.util.RandomUtil;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -23,6 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.Resource;
+import javax.validation.constraints.Min;
 import java.time.LocalDateTime;
 
 /**
@@ -66,16 +68,20 @@ public class OrderController {
 
     @ApiOperation("添加订单")
     @PostMapping("/add")
-    private ResponseResult<?> add(Integer userId, Integer scheduleId, Integer seatId) {
-        System.out.println(scheduleService.updateSeatStatus("0", scheduleId, seatId));
-        System.out.println(userService.updateIntegration(2, userId));
+    private ResponseResult<?> add(@Min(value = 1,message = "用户ID应大于{value}") Integer userId,
+                                  @Min(value = 1,message = "排片ID应大于{value}") Integer scheduleId,
+                                  @Min(value = 1,message = "座位ID应大于{value}") Integer seatId) {
+        scheduleService.updateSeatStatus("0", scheduleId, seatId);
+        userService.updateIntegration(2, userId);
 
         ResponseResult<?> result = JSONObject.parseObject(scheduleService.getById(seatId), ResponseResult.class);
         Seat seat = JSONObject.parseObject(result.getData().toString(), Seat.class);
 
-        String orderNo = "100010";
         LocalDateTime orderTime = LocalDateTime.now();
         LocalDateTime payTime = LocalDateTime.now();
+
+        String orderNo = orderTime.toString().substring(10).replaceAll("-","") +
+                RandomUtil.randomNumbers(10);
 
         boolean save = orderService.save(new Order().setOrderNo(orderNo).setOrderTime(orderTime).
                 setUserId(userId).setScheduleId(scheduleId).

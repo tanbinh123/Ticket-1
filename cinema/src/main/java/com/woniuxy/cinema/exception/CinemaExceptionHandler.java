@@ -52,6 +52,50 @@ public class CinemaExceptionHandler {
     }
 
     /**
+     * 座位不可用
+     *
+     * @return 响应
+     */
+    @ExceptionHandler(SeatUnavailableException.class)
+    public ResponseResult<?> SeatUnavailableExceptionHandler(SeatUnavailableException e) {
+        e.printStackTrace();
+        return new ResponseResult<>(StateEnum.SEAT_UNAVAILABLE);
+    }
+
+    /**
+     * 座位已可用
+     *
+     * @return 响应
+     */
+    @ExceptionHandler(SeatAvailableException.class)
+    public ResponseResult<?> SeatAvailableExceptionHandler(SeatAvailableException e) {
+        e.printStackTrace();
+        return new ResponseResult<>(StateEnum.SEAT_AVAILABLE);
+    }
+
+    /**
+     * 状态有误
+     *
+     * @return 响应
+     */
+    @ExceptionHandler(StatusErrorException.class)
+    public ResponseResult<?> StatusErrorExceptionHandler(StatusErrorException e) {
+        e.printStackTrace();
+        return new ResponseResult<>(StateEnum.STATUS_ERROR);
+    }
+
+    /**
+     * 排片时间不可用
+     *
+     * @return 响应
+     */
+    @ExceptionHandler(SchedulingOverException.class)
+    public ResponseResult<?> SchedulingTimeUnavailableExceptionHandler(SchedulingOverException e) {
+        e.printStackTrace();
+        return new ResponseResult<>(StateEnum.SCHEDULING_OVER);
+    }
+
+    /**
      * 参数非法
      *
      * @return 响应

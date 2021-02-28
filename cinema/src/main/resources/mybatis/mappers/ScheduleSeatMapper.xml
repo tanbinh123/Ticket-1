@@ -15,12 +15,5 @@
         id, schedule_id, seat_id, status
     </sql>
 
-    <update id="updateStatusByScheduleIdAndSeatId">
-        update ticket_schedule_seat
-        set status = #{status,jdbcType=VARCHAR}
-        where schedule_id = #{scheduleId,jdbcType=NUMERIC}
-          AND seat_id = #{seatId,jdbcType=NUMERIC}
-    </update>
-
 
 </mapper>

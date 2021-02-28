@@ -22,3 +22,4 @@ eureka:
 logging:
   level:
     root: info
+    com.woniuxy.cinema.mapper: debug

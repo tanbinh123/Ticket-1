@@ -21,70 +21,72 @@ public class ResponseResult<T> {
     private T data;             //返回的数据
 
     public ResponseResult(StateEnum state) {
+        this.state = state;
         switch (state) {
             case SUCCESS:
                 this.code = 200;
-                this.state = SUCCESS;
                 this.message = "操作成功";
                 break;
             case FAIL:
                 this.code = 500;
-                this.state = FAIL;
                 this.message = "操作失败";
                 break;
             case NO_LOGIN:
                 this.code = 500;
-                this.state = NO_LOGIN;
                 this.message = "请登录";
                 break;
             case WITHOUT_PERM:
                 this.code = 500;
-                this.state = WITHOUT_PERM;
                 this.message = "您无权操作";
                 break;
             case ERROR:
                 this.code = 500;
-                this.state = ERROR;
                 this.message = "服务器忙，请稍后再试";
                 break;
             case NO_DATA:
                 this.code = 500;
-                this.state = NO_DATA;
                 this.message = "没有数据";
-                break;
-            case TEACHER_INFO_ERROR:
-                this.code = 500;
-                this.state = TEACHER_INFO_ERROR;
-                this.message = "教师信息错误";
                 break;
             case INSERT_FAILED:
                 this.code = 500;
-                this.state = INSERT_FAILED;
                 this.message = "插入数据失败";
                 break;
             case TYPE_EXIST:
                 this.code = 500;
-                this.state = TYPE_EXIST;
                 this.message = "类型已存在";
                 break;
             case TYPE_NOT_EXIST:
                 this.code = 500;
-                this.state = TYPE_NOT_EXIST;
                 this.message = "类型不存在";
                 break;
             case ILLEGAL_PARAMETER:
                 this.code = 500;
-                this.state = ILLEGAL_PARAMETER;
                 this.message = "参数非法";
                 break;
             case CINEMA_INFO_EXIST:
                 this.code = 500;
-                this.state = CINEMA_INFO_EXIST;
                 this.message = "影院信息已存在";
+                break;
             case HALL_EXIST:
                 this.code = 500;
-                this.state = HALL_EXIST;
                 this.message = "放映厅已存在";
+                break;
+            case SEAT_UNAVAILABLE:
+                this.code = 500;
+                this.message = "座位不可用";
+                break;
+            case SEAT_AVAILABLE:
+                this.code = 500;
+                this.message = "座位已可用";
+                break;
+            case STATUS_ERROR:
+                this.code = 500;
+                this.message = "状态有误";
+                break;
+            case SCHEDULING_OVER:
+                this.code = 500;
+                this.message = "排片已结束";
+                break;
         }
     }
 
