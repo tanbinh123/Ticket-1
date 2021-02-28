@@ -62,13 +62,13 @@ public class ScheduleServiceImpl extends ServiceImpl<ScheduleMapper, Schedule> i
         wrapper.eq("schedule_id", scheduleId);
         wrapper.eq("seat_id", seatId);
         switch (status) {
-            // 修改座位状态为 不可用
             case "0":
+                // 修改座位状态为 不可用
                 wrapper.eq("status", "1");
                 if (scheduleSeatMapper.update(new ScheduleSeat().setStatus("0"), wrapper) == 1) return true;
                 throw new SeatUnavailableException();
-                // 修改座位状态为 可用
             case "1":
+                // 修改座位状态为 可用
                 wrapper.eq("status", "0");
                 if (scheduleSeatMapper.update(new ScheduleSeat().setStatus("1"), wrapper) == 1) return true;
                 throw new SeatAvailableException();
