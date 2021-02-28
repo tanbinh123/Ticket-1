@@ -87,6 +87,10 @@ public class ResponseResult<T> {
                 this.code = 500;
                 this.message = "排片已结束";
                 break;
+            case INTEGRATION_LACK:
+                this.code = 500;
+                this.message = "积分不足";
+                break;
         }
     }
 

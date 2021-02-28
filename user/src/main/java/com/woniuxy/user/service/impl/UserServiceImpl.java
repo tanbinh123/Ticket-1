@@ -2,6 +2,7 @@ package com.woniuxy.user.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.woniuxy.user.entity.User;
+import com.woniuxy.user.exception.IntegrationLackException;
 import com.woniuxy.user.mapper.UserMapper;
 import com.woniuxy.user.service.UserService;
 import org.springframework.stereotype.Service;
@@ -30,7 +31,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
      */
     @Override
     public Boolean updateIntegrationById(Integer chgVal, Integer id) {
-        // TODO 减积分前判断积分是否足够
-        return userMapper.updateIntegrationById(chgVal, id);
+        // 减积分判断积分是否足够
+        if (!userMapper.updateIntegrationById(chgVal, id))
+            throw new IntegrationLackException();
+        return true;
     }
 }

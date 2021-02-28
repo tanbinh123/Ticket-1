@@ -4,13 +4,13 @@
 
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.woniuxy.user.entity.User">
-        <id column="id" property="id" />
-        <result column="account" property="account" />
-        <result column="password" property="password" />
-        <result column="avatar" property="avatar" />
-        <result column="tel" property="tel" />
-        <result column="reg_time" property="regTime" />
-        <result column="integration" property="integration" />
+        <id column="id" property="id"/>
+        <result column="account" property="account"/>
+        <result column="password" property="password"/>
+        <result column="avatar" property="avatar"/>
+        <result column="tel" property="tel"/>
+        <result column="reg_time" property="regTime"/>
+        <result column="integration" property="integration"/>
     </resultMap>
 
     <!-- 通用查询结果列 -->
@@ -22,6 +22,7 @@
         update ticket_user
         set integration = integration + #{chgVal,jdbcType=NUMERIC}
         where id = #{id,jdbcType=NUMERIC}
+          and integration >= (-#{chgVal,jdbcType=NUMERIC})
     </update>
 
 
