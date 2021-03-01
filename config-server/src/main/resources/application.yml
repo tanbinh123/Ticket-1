@@ -1,0 +1,18 @@
+server:
+  port: 8066
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://gitee.com/ll_5216/ticket-config-server.git
+          search-paths: ticket-config-server
+      label: master

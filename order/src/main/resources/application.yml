@@ -30,9 +30,22 @@ logging:
 feign:
   client:
     config:
-      default:
-        connectTimeout: 5000
-        readTimeout: 5000
+      user:
+        connectTimeout: 1000 #建立连接时间
+        readTimeout: 5000 #读取时间(等待业务时间)
+  hystrix:
+    enabled: true
+
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: true #为false时使用ribbon的超时配置
+        isolation:
+          thread:
+            timeoutInMilliseconds: 20000 #超时降级
+
 
 
 

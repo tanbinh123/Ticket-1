@@ -1,4 +1,4 @@
-package com.woniuxy.user.exception;
+package com.woniuxy.order.exception;
 
 import com.woniuxy.common.enums.StateEnum;
 import com.woniuxy.common.utils.ResponseResult;
@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestControllerAdvice
-public class UserExceptionHandler {
+public class OrderExceptionHandler {
 
     /**
      * 数据库操作失败
@@ -30,7 +30,7 @@ public class UserExceptionHandler {
     }
 
     /**
-     * 积分不足
+     * 状态有误
      *
      * @return 响应
      */
@@ -38,28 +38,6 @@ public class UserExceptionHandler {
     public ResponseResult<?> IntegrationLackExceptionHandler(IntegrationLackException e) {
         e.printStackTrace();
         return new ResponseResult<>(StateEnum.INTEGRATION_LACK);
-    }
-
-    /**
-     * 账户已存在
-     *
-     * @return 响应
-     */
-    @ExceptionHandler(AccountExistedException.class)
-    public ResponseResult<?> AccountExistedExceptionHandler(AccountExistedException e) {
-        e.printStackTrace();
-        return new ResponseResult<>(StateEnum.ACCOUNT_EXISTED);
-    }
-
-    /**
-     * 手机号已存在
-     *
-     * @return 响应
-     */
-    @ExceptionHandler(TelExistedException.class)
-    public ResponseResult<?> TelExistedExceptionHandler(TelExistedException e) {
-        e.printStackTrace();
-        return new ResponseResult<>(StateEnum.TEL_EXISTED);
     }
 
     /**

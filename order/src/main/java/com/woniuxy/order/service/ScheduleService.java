@@ -1,12 +1,13 @@
 package com.woniuxy.order.service;
 
+import com.woniuxy.order.service.impl.ScheduleServiceImpl;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-@FeignClient("cinema")
+@FeignClient(value = "cinema", fallback = ScheduleServiceImpl.class)
 public interface ScheduleService {
 
     @PostMapping("/schedule/seat-status")

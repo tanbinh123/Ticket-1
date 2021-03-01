@@ -13,6 +13,14 @@ import com.woniuxy.user.entity.User;
  */
 public interface UserService extends IService<User> {
     /**
+     * 用户注册
+     *
+     * @param user 用户对象
+     * @return 注册结果
+     */
+    Boolean register(User user);
+
+    /**
      * 修改用户积分
      *
      * @param chgVal 积分变化值

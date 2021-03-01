@@ -52,21 +52,21 @@ public class OrderController {
     @Resource
     UserService userService;
 
-//    @GetMapping("/add")
-//    public String add() {
-////        String userServiceAdd = "http://USER/user/add";
-//
-////        ResponseEntity<String> entity = restTemplate.getForEntity(userServiceAdd, String.class);
-//
-////        String body = entity.getBody();
-////        System.out.println(body);
-//
-//        String add = userService.add();
-//
-//        log.info(add);
-//
-//        return "order-add";
-//    }
+    @GetMapping("/test2")
+    public String test2() {
+//        String userServiceAdd = "http://USER/user/add";
+
+//        ResponseEntity<String> entity = restTemplate.getForEntity(userServiceAdd, String.class);
+
+//        String body = entity.getBody();
+//        System.out.println(body);
+
+        String add = userService.test2();
+
+        log.info(add);
+
+        return add;
+    }
 
     /**
      * 添加订单

@@ -6,6 +6,13 @@ spring:
     password: '#5216alsfe'
   application:
     name: user
+#  cloud:
+#    config:
+#      name: ticket-config #配置文件名
+#      label: master #分支
+#      discovery:
+#        service-id: config-server #
+#        enabled: true #启用发现配置
 
 mybatis-plus:
   mapper-locations: classpath:/mybatis/mappers/*.xml

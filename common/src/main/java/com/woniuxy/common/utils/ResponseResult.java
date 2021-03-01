@@ -91,6 +91,14 @@ public class ResponseResult<T> {
                 this.code = 500;
                 this.message = "积分不足";
                 break;
+            case ACCOUNT_EXISTED:
+                this.code = 500;
+                this.message = "账户已存在";
+                break;
+            case TEL_EXISTED:
+                this.code = 500;
+                this.message = "手机号已存在";
+                break;
         }
     }
 

@@ -1,16 +1,22 @@
 package com.woniuxy.user.controller;
 
 
+import cn.hutool.crypto.SecureUtil;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.woniuxy.common.enums.StateEnum;
 import com.woniuxy.common.utils.ResponseResult;
+import com.woniuxy.user.entity.User;
 import com.woniuxy.user.service.UserService;
+import com.woniuxy.user.validation.Login;
+import com.woniuxy.user.validation.Register;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.validation.constraints.Min;
@@ -23,21 +29,66 @@ import javax.validation.constraints.Min;
  * @author ll_5216
  * @since 2021-02-23
  */
+@Api(tags = "用户接口")
 @RestController
 @Slf4j
+@Validated
 @RequestMapping("/user")
 public class UserController {
     @Resource
     UserService userService;
 
-//    @Value("${server.port}")
-//    private Integer port;
+    @Value("${server.port}")
+    private Integer port;
+
+//    @Value("${account}")
+//    private String account;
 //
-//    @RequestMapping("/add")
-//    public String add() {
-//        log.info(String.valueOf(port));
-//        return "user-add";
+//    @GetMapping("/test")
+//    private String test() {
+//        return account;
 //    }
+
+    @GetMapping("/test2")
+    public String test2() {
+        log.info(String.valueOf(port));
+        try {
+            Thread.sleep(6000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return "user-add";
+    }
+
+    /**
+     * 用户注册
+     *
+     * @param user 用户对象
+     * @return 注册结果
+     */
+    @ApiOperation("用户注册")
+    @PostMapping("/register")
+    private ResponseResult<?> register(@RequestBody @Validated(Register.class) User user) {
+        return userService.register(user) ?
+                new ResponseResult<>(StateEnum.SUCCESS) : new ResponseResult<>(StateEnum.FAIL);
+    }
+
+    /**
+     * 用户登录
+     *
+     * @param user 用户对象
+     * @return 登录结果
+     */
+    @ApiOperation("用户登录")
+    @PostMapping("/login")
+    private ResponseResult<?> login(@Validated(Login.class) User user) {
+        QueryWrapper<User> wrapper = new QueryWrapper<>();
+        wrapper.eq("account", user.getAccount());
+        wrapper.eq("password", SecureUtil.md5(user.getPassword()));
+        return userService.count(wrapper) == 1 ?
+                new ResponseResult<>(StateEnum.SUCCESS) :
+                new ResponseResult<>(StateEnum.FAIL).setMessage("账号或密码错误");
+    }
 
     /**
      * 修改用户积分
