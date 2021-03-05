@@ -3,16 +3,19 @@ package com.woniuxy.user.service.impl;
 import cn.hutool.crypto.SecureUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.woniuxy.user.entity.Perm;
 import com.woniuxy.user.entity.User;
 import com.woniuxy.user.exception.AccountExistedException;
 import com.woniuxy.user.exception.IntegrationLackException;
 import com.woniuxy.user.exception.TelExistedException;
+import com.woniuxy.user.mapper.PermMapper;
 import com.woniuxy.user.mapper.UserMapper;
 import com.woniuxy.user.service.UserService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.time.LocalDate;
+import java.util.List;
 
 /**
  * <p>
@@ -26,6 +29,8 @@ import java.time.LocalDate;
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
     @Resource
     UserMapper userMapper;
+    @Resource
+    PermMapper permMapper;
 
     /**
      * 用户注册
@@ -63,5 +68,10 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         if (!userMapper.updateIntegrationById(chgVal, id))
             throw new IntegrationLackException();
         return true;
+    }
+
+    @Override
+    public List<Perm> getMenu(Integer id) {
+        return permMapper.selectMenuByUserId(id);
     }
 }

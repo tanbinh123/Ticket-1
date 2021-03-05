@@ -53,9 +53,9 @@ public class SeatController {
 
     @ApiOperation("通过ID获取座位")
     @GetMapping("/get/{id}")
-    private ResponseResult<?> getById(@PathVariable Integer id){
+    private ResponseResult<?> getById(@PathVariable Integer id) {
         Seat seat = seatService.getById(id);
-        if (seat!=null) return new ResponseResult<>(seat);
+        if (seat != null) return new ResponseResult<>(seat);
         return new ResponseResult<>(StateEnum.FAIL);
     }
 }

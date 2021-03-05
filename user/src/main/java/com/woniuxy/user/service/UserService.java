@@ -1,7 +1,10 @@
 package com.woniuxy.user.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.woniuxy.user.entity.Perm;
 import com.woniuxy.user.entity.User;
+
+import java.util.List;
 
 /**
  * <p>
@@ -29,4 +32,11 @@ public interface UserService extends IService<User> {
      */
     Boolean updateIntegrationById(Integer chgVal, Integer id);
 
+    /**
+     * 获取用户菜单
+     *
+     * @param id 用户ID
+     * @return 菜单列表
+     */
+    List<Perm> getMenu(Integer id);
 }

@@ -1,0 +1,22 @@
+server:
+  port: 8888
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://rm-bp1n22d4fqz596a5m4o.mysql.rds.aliyuncs.com:3306/db_auth?useUnicode=true&characterEncoding=utf8
+    username: kyoko
+    password: '#5216alsfe'
+  application:
+    name: auth
+
+logging:
+  level:
+    root: info
+    com.woniuxy.auth.mapper: debug
+
+audience:
+  clientId: 098f6bcd4621d373cade4e832627b4f6
+  base64Secret: MDk4ZjZiY2Q0NjIxZDM3M2NhZGU0ZTgzMjYyN2I0ZjY=
+  name: woniuxy
+  expiresSecond: 1728000

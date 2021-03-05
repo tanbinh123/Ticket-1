@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: gateway
+  cloud:
+    gateway:
+      routes:
+        - id: users
+          uri: lb://user
+          predicates:
+            - Path=/user/**
+#            - Path=/auth/**
+        - id: orders
+          uri: lb://order
+          predicates:
+            - Path=/order/**
+
+server:
+  port: 80
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+

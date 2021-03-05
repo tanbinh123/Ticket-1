@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: zuul
+
+server:
+  port: 80
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+zuul:
+  host:
+    connect-timeout-millis: 10000
+  routes:
+    users:
+      path: /user/**
+      serviceId: user
+    order:
+      path: /order/**
+      serviceId: order
