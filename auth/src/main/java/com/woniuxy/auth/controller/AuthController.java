@@ -1,4 +1,4 @@
-package com.woniuxy.user.controller;
+package com.woniuxy.auth.controller;
 
 import com.woniuxy.common.utils.ResponseResult;
 import lombok.extern.slf4j.Slf4j;

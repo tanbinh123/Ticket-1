@@ -1,0 +1,9 @@
+spring:
+  cloud:
+    config:
+      name: ticket-config #配置文件名
+      label: master #分支
+      discovery:
+        enabled: true #启用发现
+        service-id: config-server #Eureka服务名
+#      uri: http://localhost:8066/ #直连地址

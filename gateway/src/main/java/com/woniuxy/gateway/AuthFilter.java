@@ -40,8 +40,7 @@ public class AuthFilter implements GlobalFilter, Ordered {
             result = authService.auth(path, jwt);
         }
 
-
-        if (!(result.getCode() == 200)) return authError(exchange.getResponse(), "error");
+        if (result.getCode() != 200) return authError(exchange.getResponse(), "error");
 
         return chain.filter(exchange);
     }

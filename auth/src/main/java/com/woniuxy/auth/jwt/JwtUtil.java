@@ -16,7 +16,7 @@ import java.util.Date;
 @Slf4j
 public class JwtUtil {
 
-    public static String createJWT(int id, String account, Audience audience) {
+    public static String createJWT(Integer id, String account, Audience audience) {
         try {
             // 使用HS256加密算法
             SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;

@@ -95,6 +95,7 @@ public class UserController {
     @PostMapping("/login")
     public ResponseResult<?> login(@NotBlank(message = "账号不能为空") String account,
                                    @NotBlank(message = "密码不能为空") String password,
+                                   HttpServletRequest request,
                                    HttpServletResponse response) {
         // 验证账号密码
 //        QueryWrapper<User> wrapper = new QueryWrapper<>();
@@ -116,12 +117,23 @@ public class UserController {
         }
 
         User user = (User) subject.getPrincipal();
-
+        // 生成JWT
         String jwt = JwtUtil.createJWT(user.getId(), account, audience);
 
 
-        // 生成JWT
-//        String jwt = JwtUtil.createJWT(id, account, audience);
+        // 支持所有自定义头
+        HttpServletResponse res = (HttpServletResponse) response;
+        String headers = ((HttpServletRequest) request).getHeader("Access-Control-Request-Headers");
+        if (!org.springframework.util.StringUtils.isEmpty(headers)) {
+            res.addHeader("Access-Control-Allow-Headers", headers);
+        }
+        res.addHeader("Access-Control-Max-Age", "3600");
+        res.addHeader("Access-Control-Allow-Credentials", "false");
+
+        String exposeHeaders = "access-control-expose-headers";
+        // if (!res.containsHeader(exposeHeaders))
+        res.setHeader(exposeHeaders, "*");
+
         // 设置响应头
         response.setHeader("Authorization", jwt);
 

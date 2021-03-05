@@ -10,10 +10,10 @@ public class CrossFilter implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) request;
+        HttpServletResponse res = (HttpServletResponse) response;
 //        if (req.getMethod().equalsIgnoreCase("options")) {
 //            return;
 //        }
-        HttpServletResponse res = (HttpServletResponse) response;
         String origin = req.getHeader("Origin");
         if (!org.springframework.util.StringUtils.isEmpty(origin)) {
             // 带cookie的时候，origin必须是全匹配，不能使用*

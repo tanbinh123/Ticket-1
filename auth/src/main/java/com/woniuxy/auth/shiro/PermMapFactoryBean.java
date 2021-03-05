@@ -20,6 +20,7 @@ public class PermMapFactoryBean implements FactoryBean<Map<String, String>> {
     public Map<String, String> getObject() {
         Map<String, String> map = new LinkedHashMap<>();
         // 添加静态过滤器
+        map.put("/auth","anon");
         map.put("/user/login", "anon");
         map.put("/user/menu", "jwt");
         // 添加从数据库获取的 权限过滤器
