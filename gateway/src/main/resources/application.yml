@@ -12,6 +12,10 @@ spring:
           uri: lb://order
           predicates:
             - Path=/order/**
+        - id: auths
+          uri: lb://auth
+          predicates:
+            - Path=/auth/**
       httpclient:
         response-timeout: 60000
 
