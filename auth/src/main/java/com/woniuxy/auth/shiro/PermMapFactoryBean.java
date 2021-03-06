@@ -20,21 +20,22 @@ public class PermMapFactoryBean implements FactoryBean<Map<String, String>> {
     public Map<String, String> getObject() {
         Map<String, String> map = new LinkedHashMap<>();
         // 添加静态过滤器
-        map.put("/auth","anon");
-        map.put("/user/login", "anon");
-        map.put("/user/menu", "jwt");
+        map.put("/auth/check", "anon");
+        map.put("/auth/login", "anon");
+        map.put("/auth/menu", "anon");
+        map.put("/auth/menu-check", "jwt");
         // 添加从数据库获取的 权限过滤器
         QueryWrapper<Perm> wrapper = new QueryWrapper<>();
         wrapper.eq("type", "a");
-        permMapper.selectList(wrapper).forEach(perm -> {
-            map.put(perm.getLink(), "jwt,perms[" + perm.getCode() + "]");
-        });
+        permMapper.selectList(wrapper).forEach(perm ->
+                map.put(perm.getLink(), "jwt,perms[" + perm.getCode() + "]"));
 
         return map;
     }
 
     /**
      * 重写 FactoryBean 返回的 Bean 的类型
+     *
      * @return Map.class
      */
     @Override

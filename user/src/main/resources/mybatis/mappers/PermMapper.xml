@@ -4,12 +4,12 @@
 
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.woniuxy.user.entity.Perm">
-        <id column="id" property="id" />
-        <result column="name" property="name" />
-        <result column="code" property="code" />
-        <result column="link" property="link" />
-        <result column="parent_id" property="parentId" />
-        <result column="type" property="type" />
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="code" property="code"/>
+        <result column="link" property="link"/>
+        <result column="parent_id" property="parentId"/>
+        <result column="type" property="type"/>
     </resultMap>
 
     <!-- 通用查询结果列 -->
@@ -17,4 +17,14 @@
         id, name, code, link, parent_id, type
     </sql>
 
+    <select id="selectMenuByUserId" resultType="com.woniuxy.user.entity.Perm">
+        select id, code, name, parent_id
+        from db_user.ticket_perm,
+             db_user.ticket_role_perm,
+             db_user.ticket_user_role
+        where user_id = #{id}
+          and type = 'm'
+          and id = perm_id
+          and ticket_role_perm.role_id = ticket_user_role.role_id
+    </select>
 </mapper>

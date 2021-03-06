@@ -34,11 +34,14 @@ public class AuthFilter implements GlobalFilter, Ordered {
         String jwt = exchange.getRequest().getHeaders().getFirst("jwt");
 
         ResponseResult<?> result;
-        if (Objects.equals(path, "/user/login")) {
-            result = authService.login("110", "123123");
+        if (Objects.equals(path, "/user/login")) return chain.filter(exchange);
+
+        if (Objects.equals(path, "/user/menu")) {
+            result = authService.auth(path + "-check", jwt);
         } else {
             result = authService.auth(path, jwt);
         }
+
 
         if (result.getCode() != 200) return authError(exchange.getResponse(), "error");
 
