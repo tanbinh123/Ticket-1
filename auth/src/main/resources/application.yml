@@ -1,5 +1,10 @@
 spring:
   datasource:
+    hikari:
+      minimum-idle: 3
+      maximum-pool-size: 10
+      max-lifetime: 30000   #不能小于30秒，否则默认回到1800秒
+      connection-test-query: SELECT 1
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://rm-bp1n22d4fqz596a5m4o.mysql.rds.aliyuncs.com:3306/db_auth?useUnicode=true&characterEncoding=utf8
     username: kyoko

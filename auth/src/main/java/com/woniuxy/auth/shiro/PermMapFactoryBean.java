@@ -23,7 +23,6 @@ public class PermMapFactoryBean implements FactoryBean<Map<String, String>> {
         map.put("/auth/check", "anon");
         map.put("/auth/login", "anon");
         map.put("/auth/menu", "anon");
-        map.put("/auth/menu-check", "jwt");
         // 添加从数据库获取的 权限过滤器
         QueryWrapper<Perm> wrapper = new QueryWrapper<>();
         wrapper.eq("type", "a");

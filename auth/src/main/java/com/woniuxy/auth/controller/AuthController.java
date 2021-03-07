@@ -28,7 +28,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 
 @Slf4j
-@CrossOrigin(exposedHeaders = "Authorization")
+//@CrossOrigin(exposedHeaders = "Authorization")
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
@@ -60,17 +60,17 @@ public class AuthController {
         String jwt = JwtUtil.createJWT(user.getId(), account, audience);
 
         // 支持所有自定义头
-        HttpServletResponse res = (HttpServletResponse) response;
-        String headers = ((HttpServletRequest) request).getHeader("Access-Control-Request-Headers");
-        if (!org.springframework.util.StringUtils.isEmpty(headers)) {
-            res.addHeader("Access-Control-Allow-Headers", headers);
-        }
-        res.addHeader("Access-Control-Max-Age", "3600");
-        res.addHeader("Access-Control-Allow-Credentials", "false");
-
-        String exposeHeaders = "access-control-expose-headers";
-        // if (!res.containsHeader(exposeHeaders))
-        res.setHeader(exposeHeaders, "*");
+//        HttpServletResponse res = (HttpServletResponse) response;
+//        String headers = ((HttpServletRequest) request).getHeader("Access-Control-Request-Headers");
+//        if (!org.springframework.util.StringUtils.isEmpty(headers)) {
+//            res.addHeader("Access-Control-Allow-Headers", headers);
+//        }
+//        res.addHeader("Access-Control-Max-Age", "3600");
+//        res.addHeader("Access-Control-Allow-Credentials", "false");
+//
+//        String exposeHeaders = "access-control-expose-headers";
+//        // if (!res.containsHeader(exposeHeaders))
+//        res.setHeader(exposeHeaders, "*");
 
         // 设置响应头
         response.setHeader("Authorization", jwt);

@@ -6,11 +6,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-@FeignClient("user")
+@FeignClient("auth")
 public interface AuthService {
-    @RequestMapping("/auth")
+    @RequestMapping("/auth/check")
     ResponseResult<?> auth(@RequestParam String url, @RequestParam String jwt);
 
-    @PostMapping("/user/login")
+    @PostMapping("/auth/login")
     ResponseResult<?> login(@RequestParam String account, @RequestParam String password);
 }
