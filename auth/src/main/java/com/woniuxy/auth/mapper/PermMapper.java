@@ -15,7 +15,6 @@ import java.util.List;
  * @since 2021-03-03
  */
 public interface PermMapper extends BaseMapper<Perm> {
-    @Select("select * from user_perm_view where user_id = #{id} and type = 'm'")
     List<Perm> selectMenuByUserId(Integer id);
 
     @Select("select * from user_perm_view where user_id = #{id} and type = 'a'")
