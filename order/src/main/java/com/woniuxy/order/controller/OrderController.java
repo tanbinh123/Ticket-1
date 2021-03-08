@@ -95,7 +95,7 @@ public class OrderController {
         LocalDateTime orderTime = LocalDateTime.now();
         LocalDateTime payTime = LocalDateTime.now();
 
-        String orderNo = orderTime.toString().substring(10).replaceAll("-", "") +
+        String orderNo = /*orderTime.toString().substring(10).replaceAll("-", "") + */
                 RandomUtil.randomNumbers(10);
 
         boolean save = orderService.save(new Order().setOrderNo(orderNo).setOrderTime(orderTime).
