@@ -22,7 +22,7 @@ spring:
               args:
                 key-resolver: '#{@uriKeyResolver}'
                 redis-rate-limiter.replenishRate: 1
-                redis-rate-limiter.burstCapacity: 3
+                redis-rate-limiter.burstCapacity: 60
       httpclient:
         response-timeout: 60000
 
