@@ -30,6 +30,7 @@ public class GatewayApplication {
 		return new HttpMessageConverters(converters.orderedStream().collect(Collectors.toList()));
 	}
 
+	// 跨域
 	@Bean
 	public CorsWebFilter corsFilter() {
 		CorsConfiguration config = new CorsConfiguration();
@@ -41,5 +42,11 @@ public class GatewayApplication {
 		source.registerCorsConfiguration("/**", config);
 
 		return new CorsWebFilter(source);
+	}
+
+	// 限流
+	@Bean
+	public UriKeyResolver uriKeyResolver() {
+		return new UriKeyResolver();
 	}
 }

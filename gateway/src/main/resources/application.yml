@@ -16,6 +16,13 @@ spring:
           uri: lb://auth
           predicates:
             - Path=/auth/**
+          # 限流(通过URI)
+          filters:
+            - name: RequestRateLimiter
+              args:
+                key-resolver: '#{@uriKeyResolver}'
+                redis-rate-limiter.replenishRate: 1
+                redis-rate-limiter.burstCapacity: 3
       httpclient:
         response-timeout: 60000
 
