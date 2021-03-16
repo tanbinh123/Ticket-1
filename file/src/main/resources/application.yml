@@ -22,8 +22,8 @@ logging:
 
 oss:
   endpoint: oss-cn-hangzhou.aliyuncs.com
-  keyid: LTAI4GHavKiMSYy9qKk8CbKZ # 填写刚刚生成的AccessKey
-  keysecret: DcT2KJywfUKf83uBibmXklZW72wPLL  # 填写刚刚生成的AccessSecret
+  keyid: xxxxx # 填写刚刚生成的AccessKey
+  keysecret: xxxxx  # 填写刚刚生成的AccessSecret
   bucketname: static-file-kyoko # bucket名称
   filehost: ticket    # bucket下文件夹的路径
 
